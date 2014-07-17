@@ -6,6 +6,5 @@ Werkzeug==0.8.3
 gunicorn==0.17.2
 ipython==0.13.2
 PyGithub==1.25.0
-PySAL==1.6.0
 PyYAML==3.11
 numpy==1.8.0
