@@ -8,9 +8,11 @@ import os
 @app.route('/')
 def index():
 
-  """
+
     from github import Github
     import yaml
+
+    gh = Github(app.config['GH_USER'], app.config['GH_KEY'])
     user = 'tonyfast'
     repo_name = 'Organic-Field-Effect-Transistor'
     repo = gh.get_user(user).get_repo(repo_name)
@@ -33,9 +35,6 @@ def index():
         # file number, number of unique metadata fields
 
     return str(allkeys)
-  """
-  
-  return app.config['GH_USER']
 
 
 @app.route('/bikes/<int:id>')
