@@ -4,20 +4,21 @@ from metaregistry import app
 import os
 # from metaregistry import gh
 
-
 @app.route('/')
-def index():
+@app.route('/<user>/<repo>')
+def index(user = 'tonyfast',
+          repo = 'Organic-Field-Effect-Transistor'):
 
 
     from github import Github
     from metaregistry import app
     import yaml
 
+
     gh = Github(app.config['GH_USER'], app.config['GH_KEY'])
 
-    user = 'tonyfast'
-    repo_name = 'Organic-Field-Effect-Transistor'
-    repo = gh.get_user(user).get_repo(repo_name)
+
+    repo = gh.get_user(user).get_repo(repo)
 
     # Initialize Unique Keys
     allkeys = list()
