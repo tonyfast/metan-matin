@@ -10,9 +10,11 @@ def index():
 
 
     from github import Github
+    from metaregistry import app
     import yaml
 
     gh = Github(app.config['GH_USER'], app.config['GH_KEY'])
+
     user = 'tonyfast'
     repo_name = 'Organic-Field-Effect-Transistor'
     repo = gh.get_user(user).get_repo(repo_name)
