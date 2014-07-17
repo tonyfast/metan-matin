@@ -13,6 +13,7 @@ def index(user = 'tonyfast',
     from github import Github
     from metaregistry import app
     import yaml
+    from pandas import pd
 
 
     gh = Github(app.config['GH_USER'], app.config['GH_KEY'])
@@ -30,8 +31,8 @@ def index(user = 'tonyfast',
     # 2. Import YAML
     # 3. Find unique fields interatively
     for ii, n in enumerate(fil):
-        mdcontent = yaml.load( n.decoded_content )
-        keys = [ x for x in mdcontent]
+        mdcontent = pd.DataFrame( yaml.load( n.decoded_content ) )
+        keys = mdcontent.columns.tolist();
         allkeys = list( set( allkeys).union( list(keys) ))
         if ii > 3:
           break
