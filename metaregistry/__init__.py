@@ -23,4 +23,8 @@ app = Flask(__name__)
 # sa = SQLAlchemy(app)
 
 # import modules containing routes
+
+app.config['GH_USER'] = os.environ['GH_USER']
+app.config['GH_KEY'] = os.environ['GH_KEY']
+
 from metaregistry import views

@@ -1,12 +1,14 @@
 """UI routes"""
 
 from metaregistry import app
+import os
 # from metaregistry import gh
 
 
 @app.route('/')
 def index():
 
+  """
     from github import Github
     import yaml
     user = 'tonyfast'
@@ -31,6 +33,9 @@ def index():
         # file number, number of unique metadata fields
 
     return str(allkeys)
+  """
+  
+  return app.config['GH_USER']
 
 
 @app.route('/bikes/<int:id>')
