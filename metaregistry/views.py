@@ -13,8 +13,6 @@ def index(user = 'tonyfast',
     from github import Github
     from metaregistry import app
     import yaml
-    from pandas import pd
-
 
     gh = Github(app.config['GH_USER'], app.config['GH_KEY'])
 
@@ -30,11 +28,18 @@ def index(user = 'tonyfast',
     # 1. Loop over the contents of data file
     # 2. Import YAML
     # 3. Find unique fields interatively
-    for ii, n in enumerate(fil):
-        mdcontent = pd.DataFrame( yaml.load( n.decoded_content ) )
-        keys = mdcontent.columns.tolist();
-        allkeys = list( set( allkeys).union( list(keys) ))
-        if ii > 3:
+    for ii, datapage in enumerate(fil):
+        ya = yaml.load(datapage.decoded_content)
+        if ya is dict:
+            ya = [ya] #ya
+            # Break Ya Neck
+            # https://www.youtube.com/watch?v=W7FfCJb8JZQ
+            # HERE WE GO
+        for feat in ya:
+            for keys in feat.iteritems():
+                    allkeys = list( set( allkeys).union( {keys[0]} ));
+
+        if ii > 0:
           break
         # file number, number of unique metadata fields
 
