@@ -30,15 +30,16 @@ def index(user = 'tonyfast',
     # 3. Find unique fields interatively
     for ii, datapage in enumerate(fil):
         ya = yaml.load(datapage.decoded_content)
-        if ya is dict:
+
+        if type(ya) is dict:
             ya = [ya] #ya
             # Break Ya Neck
             # https://www.youtube.com/watch?v=W7FfCJb8JZQ
             # HERE WE GO
         for feat in ya:
             for keys in feat.iteritems():
-                    allkeys = list( set( allkeys).union( {keys[0]} ));
-
+                allkeys = list( set( allkeys).union( {keys[0]} ));
+                
         if ii > 0:
           break
         # file number, number of unique metadata fields
